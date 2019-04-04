@@ -17,7 +17,7 @@
 
     "description" : "Helper for looking up perl objects from C callbacks",
 
-    "test-depends" : [ "Test", "Test::META" ],
+    "test-depends" : [ "Test", "Test::When", "Test::META" ],
 
     "license" : "Artistic-2.0",
 
