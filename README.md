@@ -12,7 +12,6 @@ SYNOPSIS
 
     sub make_a_thing(--> thing) is native {}
     sub setcallback(&callback (int64 --> int32), int64) is native {}
-    sub callit(--> int32) is native('./callback') {}
 
     class PerlObject
     {
