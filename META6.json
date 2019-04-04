@@ -1,0 +1,30 @@
+{
+    "name" : "NativeHelpers::Callback",
+
+    "version" : "0.1",
+
+    "source-url" : "https://github.com/CurtTilmes/perl6-nativehelpers-callbackgit.git",
+
+    "perl" : "6.*",
+
+    "tags" : [ "NATIVECALL" ],
+
+    "provides" : {
+        "NativeHelpers::Callback": "lib/NativeHelpers/Callback.pm6"
+    },
+
+    "depends" : [ ],
+
+    "description" : "Helper for looking up perl objects from C callbacks",
+
+    "test-depends" : [ "Test", "Test::META" ],
+
+    "license" : "Artistic-2.0",
+
+    "authors" : [ "Curt Tilmes <ctilmes@cpan.org>" ],
+
+    "support" : {
+      "source" : "https://github.com/CurtTilmes/perl6-nativehelpers-callback.git",
+      "bugtracker" : "https://github.com/CurtTilmes/perl6-nativehelpers-callback/issues"
+    }
+}
