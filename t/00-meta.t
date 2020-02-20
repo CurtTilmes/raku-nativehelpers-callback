@@ -1,3 +1,5 @@
+#!/usr/bin/env raku
+
 use Test;
 use Test::When <author>;
 use Test::META;

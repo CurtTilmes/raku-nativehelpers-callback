@@ -1,4 +1,7 @@
+#!/usr/bin/env raku
+
 use Test;
+use Test::When <author>;
 use NativeCall;
 use lib './t';
 use NativeHelpers::Callback;
@@ -12,7 +15,7 @@ sub make_a_thing(--> thing) is native('./callback') {}
 sub setcallback(&callback (int64 --> int32), int64) is native('./callback') {}
 sub callit(--> int32) is native('./callback') {}
 
-class PerlObject
+class RakuObject
 {
     has thing $.thing;
     has int32 $.number;
@@ -26,7 +29,7 @@ sub my-callback(int64 $user-data --> int32)
     NativeHelpers::Callback.lookup($user-data).number
 }
 
-my $object = PerlObject.new(thing => make_a_thing, number => 12);
+my $object = RakuObject.new(thing => make_a_thing, number => 12);
 
 plan 8;
 
@@ -48,4 +51,3 @@ ok $callback-called, 'callback got called';
 ok NativeHelpers::Callback.remove($object.thing);
 
 done-testing;
-

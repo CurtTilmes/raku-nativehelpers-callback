@@ -1,21 +1,21 @@
 {
     "name" : "NativeHelpers::Callback",
 
-    "version" : "0.1",
+    "version" : "0.2",
 
-    "source-url" : "https://github.com/CurtTilmes/perl6-nativehelpers-callbackgit.git",
+    "source-url" : "https://github.com/CurtTilmes/raku-nativehelpers-callback.git",
 
     "perl" : "6.*",
 
     "tags" : [ "NATIVECALL" ],
 
     "provides" : {
-        "NativeHelpers::Callback": "lib/NativeHelpers/Callback.pm6"
+        "NativeHelpers::Callback": "lib/NativeHelpers/Callback.rakumod"
     },
 
     "depends" : [ ],
 
-    "description" : "Helper for looking up perl objects from C callbacks",
+    "description" : "Helper for looking up Raku objects from C callbacks",
 
     "test-depends" : [ "Test", "Test::When", "Test::META" ],
 

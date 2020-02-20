@@ -29,7 +29,7 @@ sub cb() is export(:cb) { NativeHelpers::Callback }
 
 =head1 NAME
 
-NativeHelpers::Callback - Helper for looking up perl objects from C callbacks
+NativeHelpers::Callback - Helper for looking up Raku objects from C callbacks
 
 =head1 SYNOPSIS
 
@@ -40,7 +40,7 @@ NativeHelpers::Callback - Helper for looking up perl objects from C callbacks
   sub make_a_thing(--> thing) is native {}
   sub setcallback(&callback (int64 --> int32), int64) is native {}
 
-  class PerlObject
+  class RakuObject
   {
       has thing $.thing;
       has int32 $.number;
@@ -51,7 +51,7 @@ NativeHelpers::Callback - Helper for looking up perl objects from C callbacks
       NativeHelpers::Callback.lookup($user-data).number
   }
 
-  my $object = PerlObject.new(thing => make_a_thing, number => 12);
+  my $object = RakuObject.new(thing => make_a_thing, number => 12);
 
   NativeHelpers::Callback.store($object, $object.thing);
 
@@ -72,9 +72,9 @@ C libraries often have callback routines allowing you to pass in an
 extra C<void *> parameter of user data from which you are supposed to
 link into whatever functionality you need from within the callback.
 
-When using Perl routines as callbacks, naturally you want to pass in
-your Perl object.  This is complicated by the fact that the Garbage
-Collector can potentially move Perl objects around so they may not be
+When using Raku routines as callbacks, naturally you want to pass in
+your Raku object.  This is complicated by the fact that the Garbage
+Collector can potentially move Raku objects around so they may not be
 found where you initially put them.
 
 This simple helper object associates a perl object with some object
@@ -86,7 +86,7 @@ Note this is 64-bit architecture specific, and assumes C<void *>
 pointers are interchangeable with C<int64>.
 
 Wherever you see a C<void *> in a library.h file, just use C<int64>
-for the Perl NativeCall subroutine that calls it.
+for the Raku NativeCall subroutine that calls it.
 
 For example:
 
