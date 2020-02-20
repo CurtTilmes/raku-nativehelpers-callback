@@ -1,7 +1,7 @@
 NAME
 ====
 
-NativeHelpers::Callback - Helper for looking up perl objects from C callbacks
+NativeHelpers::Callback - Helper for looking up Raku objects from C callbacks
 
 SYNOPSIS
 ========
@@ -13,7 +13,7 @@ SYNOPSIS
     sub make_a_thing(--> thing) is native {}
     sub setcallback(&callback (int64 --> int32), int64) is native {}
 
-    class PerlObject
+    class RakuObject
     {
         has thing $.thing;
         has int32 $.number;
@@ -24,7 +24,7 @@ SYNOPSIS
         NativeHelpers::Callback.lookup($user-data).number
     }
 
-    my $object = PerlObject.new(thing => make_a_thing, number => 12);
+    my $object = RakuObject.new(thing => make_a_thing, number => 12);
 
     NativeHelpers::Callback.store($object, $object.thing);
 
@@ -44,13 +44,13 @@ DESCRIPTION
 
 C libraries often have callback routines allowing you to pass in an extra `void *` parameter of user data from which you are supposed to link into whatever functionality you need from within the callback.
 
-When using Perl routines as callbacks, naturally you want to pass in your Perl object. This is complicated by the fact that the Garbage Collector can potentially move Perl objects around so they may not be found where you initially put them.
+When using Raku routines as callbacks, naturally you want to pass in your Raku object. This is complicated by the fact that the Garbage Collector can potentially move Raku objects around so they may not be found where you initially put them.
 
-This simple helper object associates a perl object with some object that can be cast to a `int64` type so you can easily register the object (`store`/`remove`), and `lookup` from within a callback routine, associated with an `id` of that thing.
+This simple helper object associates a Raku object with some object that can be cast to a `int64` type so you can easily register the object (`store`/`remove`), and `lookup` from within a callback routine, associated with an `id` of that thing.
 
 Note this is 64-bit architecture specific, and assumes `void *` pointers are interchangeable with `int64`.
 
-Wherever you see a `void *` in a library.h file, just use `int64` for the Perl NativeCall subroutine that calls it.
+Wherever you see a `void *` in a library.h file, just use `int64` for the Raku NativeCall subroutine that calls it.
 
 For example:
 

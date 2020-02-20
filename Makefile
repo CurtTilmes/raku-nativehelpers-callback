@@ -6,8 +6,8 @@ check: README.md
 	git diff-index --check HEAD
 	prove6
 
-README.md: lib/NativeHelpers/Callback.pm6
-	perl6 --doc=Markdown $< > $@
+README.md: lib/NativeHelpers/Callback.rakumod
+	raku --doc=Markdown $< > $@
 
 tag:
 	git tag $(VERSION)

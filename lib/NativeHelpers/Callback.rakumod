@@ -77,7 +77,7 @@ your Raku object.  This is complicated by the fact that the Garbage
 Collector can potentially move Raku objects around so they may not be
 found where you initially put them.
 
-This simple helper object associates a perl object with some object
+This simple helper object associates a Raku object with some object
 that can be cast to a C<int64> type so you can easily register the
 object (C<store>/C<remove>), and C<lookup> from within a callback
 routine, associated with an C<id> of that thing.
