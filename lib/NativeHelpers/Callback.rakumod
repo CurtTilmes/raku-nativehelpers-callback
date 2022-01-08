@@ -5,7 +5,7 @@ class NativeHelpers::Callback
     my %allobjects;
     my $lock = Lock.new;
 
-    method id($thing --> int64) { nativecast(int64, $thing) }
+    method id($thing --> int64) { my int64 $ = $thing }
 
     method lookup(int64 $id)
     {
